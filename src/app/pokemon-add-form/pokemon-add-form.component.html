@@ -1,0 +1,15 @@
+<app-navbar></app-navbar>
+<div class="container col-4 text-center">
+
+  <h4>Saisissez ci-dessous les champs requis pour la création du Pokemon (tous les champs sont requis) </h4>
+
+  <form #addPokemon="ngForm" (ngSubmit)="onSubmit(addPokemon)">
+    <span>Nom : </span><input type="text" class="m-3" name="name" ngModel required><br>
+    <span>HP : </span><input type="number" class="m-3" name="hp" ngModel required><br>
+    <span>CP : </span><input type="number" class="m-3" name="cp" ngModel required><br>
+    <span>Url de la photo : </span><input type="text" class="m-3" name="picture" ngModel required><br>
+    <span>Type(un seul type possible) : </span><input type="text" class="m-3" name="types" ngModel required><br>
+
+    <button type="submit" class="btn btn-primary m-3" >Créer le Pokemon</button>
+  </form>
+</div>

@@ -1,7 +1,10 @@
 <app-navbar></app-navbar>
 
+<div class="container text-center">
+  <a class="btn btn-primary" routerLink="/addPokemon" role="button">Ajouter un pokemon</a>
+</div>
 <div class="container card-group">
-  <div *ngFor="let pokemon of pokemons" class="pokemon col-4">
+  <div *ngFor="let pokemon of pokemons" class="pokemon col-3">
     <div class="card m-2 p-3 border border-dark">
       <img src="{{pokemon.picture}}" class="card-img-top" alt="pokemon">
       <div class="card-body text-center">
@@ -9,23 +12,25 @@
           <h5 class="card-title text-center">{{pokemon.name}}</h5>
         </a>
         <p class="card-title text-center">HP : {{pokemon.hp}}</p>
-        <p class="card-text text-center">Créé le : {{pokemon.created}}</p>
       </div>
+      <a (click)="suppressPokemon(pokemon.id)" class="btn btn-secondary m-3">Supprimer</a>
     </div>
   </div>
+
+
+  <!-- MODALE -->
   <div class="modal fade text-center" id="affichePokemon" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">{{onePokemon?.name}}</h5>
+          <h5 class="modal-title" id="exampleModalLabel">{{pokemonSelected?.name}}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <img src="{{onePokemon?.picture}}" style="width: 15em">
-          <p>HP: {{onePokemon?.hp}}</p>
-          <p>CP: {{onePokemon?.cp}}</p>
-          <p>Type: {{onePokemon?.types}}</p>
-          <p>Créé le : {{onePokemon?.created}}</p>
+          <img src="{{pokemonSelected?.picture}}" style="width: 15em">
+          <p>HP: {{pokemonSelected?.hp}}</p>
+          <p>CP: {{pokemonSelected?.cp}}</p>
+          <p>Type: {{pokemonSelected?.types}}</p>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary">Save changes</button>

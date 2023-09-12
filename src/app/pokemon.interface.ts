@@ -4,6 +4,5 @@ export interface PokemonInterface {
   cp: number;
   name: string;
   picture: string;
-  types: Array<string>;
-  created: Date;
+  types: string;
 }

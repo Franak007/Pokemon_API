@@ -10,25 +10,31 @@ import {PokemonService} from "../pokemon.service";
 export class PokemonPageComponent implements OnInit {
 
   pokemons: PokemonInterface[] = [];
-  onePokemon: PokemonInterface | undefined;
+  pokemonSelected: PokemonInterface | undefined;
 
   constructor(private pokemonService: PokemonService) {
   }
 
   ngOnInit() {
-
-    this.pokemonService.fetchAll().subscribe(data => {
-
+    this.pokemonService.getAll().subscribe(data => {
+      console.table(data);
       this.pokemons = data;
 
     });
-
   }
 
-  getOnePokemon(id: any): void {
-    this.pokemonService.fetchOne(id).subscribe(pokemon => {
-      this.onePokemon = pokemon;
+  getOnePokemon(id: number): void {
+    this.pokemonService.getOne(id).subscribe(pokemonResult => {
+      this.pokemonSelected = pokemonResult;
 
     })
+  }
+
+  suppressPokemon(id: number): void {
+    console.log(id);
+    this.pokemonService.deletePokemon(id).subscribe(deleteResult => {
+      console.log(deleteResult);
+
+    });
   }
 }
